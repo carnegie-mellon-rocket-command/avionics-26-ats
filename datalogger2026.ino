@@ -104,7 +104,9 @@ const int LED_PIN = LED_BUILTIN;
 Servo m_atsServo;
 float gAtsPosition = 0.0f;
 const int ATS_MIN = 0;
-const int ATS_MAX = 180;
+
+const int ATS_MAX = 254/270*180; // 254 constraint from flaps / 270 (servo max) * 180 (library function mapping)
+
 const float ATS_IN = 0.0f;
 const float ATS_OUT = 1.0f;
 // SD CARD PARAMETERS
