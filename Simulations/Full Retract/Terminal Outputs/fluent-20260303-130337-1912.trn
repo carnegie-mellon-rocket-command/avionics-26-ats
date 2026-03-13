@@ -1,0 +1,467 @@
+Auto-Transcript Start Time:  13:03:37, 03 Mar 2026 Eastern Standard Time 
+Current Directory: "C:\Users\Jason\Box\CMRC Personal\Fluent\Drag 2026 USLI\Compute Working Dir\Full Retract"
+
+              Welcome to ANSYS Fluent 2025 R2
+
+              Copyright 1987-2025 ANSYS, Inc. All Rights Reserved.
+              Unauthorized use, distribution or duplication is prohibited.
+              This product is subject to U.S. laws governing export and re-export.
+              For full Legal Notice, see documentation.
+
+Build Time: Jun 16 2025 10:42:46 EDT  Build Id: 10204  
+ 
+Connected License Server List:	<Shared_Web_License_Server>
+
+*********************************************
+Info: Your license enables 4-way parallel execution.
+For faster simulations, please start the application with the appropriate parallel options.
+*********************************************
+
+
+     --------------------------------------------------------------
+     This is a student version of ANSYS FLUENT. Usage of this product
+     license is limited to the terms and conditions specified in your ANSYS
+     license form, additional terms section.
+     --------------------------------------------------------------
+Host spawning Node 0 on machine "jason-hp-envy" (win64).
+
+----------------------------------------------------------------------------------
+ID    Hostname       Core  O.S.         PID    Vendor                            
+----------------------------------------------------------------------------------
+n2    jason-hp-envy  3/14  Windows-x64  50812  Intel(R) Core(TM) Ultra 7 155U    
+n1    jason-hp-envy  2/14  Windows-x64  51748  Intel(R) Core(TM) Ultra 7 155U    
+n0*   jason-hp-envy  1/14  Windows-x64  29064  Intel(R) Core(TM) Ultra 7 155U    
+host  jason-hp-envy        Windows-x64  45720  Intel(R) Core(TM) Ultra 7 155U    
+
+MPI Option Selected: intel
+Selected system interconnect: default
+----------------------------------------------------------------------------------
+
+Cleanup script file is C:\\Users\\Jason\\Box\\CMRC Personal\\Fluent\\Drag 2026 USLI\\Compute Working Dir\\Full Retract\\cleanup-fluent-jason-hp-envy-45720.bat
+
+Graphics driver currently in use: dx11
+
+Fast-loading "C:\PROGRA~1\ANSYSI~1\ANSYSS~1\v252\fluent\fluent25.2.0\\addons\afd\lib\hdfio.bin"
+Done.
+Note: Rank = 0: Process affinity not being set (6).
+Note: Rank = 1: Process affinity not being set (6).
+Note: Rank = 2: Process affinity not being set (6).
+
+Reading from jason-hp-envy:"C:/Users/Jason/Box/CMRC Personal/Fluent/Drag 2026 USLI/Compute Working Dir/Full Retract/Simplified Rocket 100m-s Run 1.cas.h5" in NODE0 mode ...
+  Reading mesh ...
+      157223 cells,     2 cell zones ...
+          25036 polyhedra cells,  zone id: 2923
+         132187 polyhedra cells,  zone id: 2926
+      927030 faces,   129 face zones ...
+         750782 polygonal interior faces,  zone id: 2925
+         142582 polygonal interior faces,  zone id: 2922
+           2562 polygonal wall faces,  zone id: 12
+             13 polygonal wall faces,  zone id: 2685
+              7 polygonal wall faces,  zone id: 2684
+              4 polygonal wall faces,  zone id: 2683
+              4 polygonal wall faces,  zone id: 2682
+              4 polygonal wall faces,  zone id: 2681
+             15 polygonal wall faces,  zone id: 2680
+              4 polygonal wall faces,  zone id: 2679
+              4 polygonal wall faces,  zone id: 2678
+              5 polygonal wall faces,  zone id: 2677
+             13 polygonal wall faces,  zone id: 2676
+              6 polygonal wall faces,  zone id: 2675
+              4 polygonal wall faces,  zone id: 2674
+              5 polygonal wall faces,  zone id: 2673
+             16 polygonal wall faces,  zone id: 2672
+              4 polygonal wall faces,  zone id: 2671
+              4 polygonal wall faces,  zone id: 2670
+              4 polygonal wall faces,  zone id: 2669
+              4 polygonal wall faces,  zone id: 2668
+            139 polygonal wall faces,  zone id: 2667
+            139 polygonal wall faces,  zone id: 56
+              3 polygonal wall faces,  zone id: 2666
+              3 polygonal wall faces,  zone id: 55
+              3 polygonal wall faces,  zone id: 2665
+              3 polygonal wall faces,  zone id: 54
+              3 polygonal wall faces,  zone id: 2664
+              3 polygonal wall faces,  zone id: 53
+             28 polygonal wall faces,  zone id: 2663
+             28 polygonal wall faces,  zone id: 52
+             31 polygonal wall faces,  zone id: 2662
+             31 polygonal wall faces,  zone id: 51
+            832 polygonal wall faces,  zone id: 2661
+            832 polygonal wall faces,  zone id: 50
+            833 polygonal wall faces,  zone id: 2660
+            833 polygonal wall faces,  zone id: 49
+             56 polygonal wall faces,  zone id: 2659
+             56 polygonal wall faces,  zone id: 48
+            831 polygonal wall faces,  zone id: 2658
+            831 polygonal wall faces,  zone id: 47
+            827 polygonal wall faces,  zone id: 2657
+            827 polygonal wall faces,  zone id: 46
+            122 polygonal wall faces,  zone id: 2656
+            122 polygonal wall faces,  zone id: 45
+             56 polygonal wall faces,  zone id: 2655
+             56 polygonal wall faces,  zone id: 44
+            826 polygonal wall faces,  zone id: 2654
+            826 polygonal wall faces,  zone id: 43
+             56 polygonal wall faces,  zone id: 2653
+             56 polygonal wall faces,  zone id: 42
+            832 polygonal wall faces,  zone id: 2652
+            832 polygonal wall faces,  zone id: 41
+            828 polygonal wall faces,  zone id: 2651
+            828 polygonal wall faces,  zone id: 40
+            830 polygonal wall faces,  zone id: 2650
+            830 polygonal wall faces,  zone id: 39
+             56 polygonal wall faces,  zone id: 2649
+             56 polygonal wall faces,  zone id: 38
+            219 polygonal wall faces,  zone id: 2648
+            219 polygonal wall faces,  zone id: 37
+             13 polygonal wall faces,  zone id: 2647
+             13 polygonal wall faces,  zone id: 36
+             16 polygonal wall faces,  zone id: 2646
+             16 polygonal wall faces,  zone id: 35
+             13 polygonal wall faces,  zone id: 2645
+             13 polygonal wall faces,  zone id: 34
+              4 polygonal wall faces,  zone id: 2644
+              4 polygonal wall faces,  zone id: 33
+              4 polygonal wall faces,  zone id: 2643
+              4 polygonal wall faces,  zone id: 32
+              4 polygonal wall faces,  zone id: 2642
+              4 polygonal wall faces,  zone id: 31
+              6 polygonal wall faces,  zone id: 2641
+              6 polygonal wall faces,  zone id: 30
+             15 polygonal wall faces,  zone id: 2640
+             15 polygonal wall faces,  zone id: 29
+             13 polygonal wall faces,  zone id: 2639
+             13 polygonal wall faces,  zone id: 28
+             13 polygonal wall faces,  zone id: 2638
+             13 polygonal wall faces,  zone id: 27
+             14 polygonal wall faces,  zone id: 2637
+             14 polygonal wall faces,  zone id: 26
+             74 polygonal wall faces,  zone id: 2636
+             74 polygonal wall faces,  zone id: 25
+             21 polygonal wall faces,  zone id: 2635
+             21 polygonal wall faces,  zone id: 24
+              4 polygonal wall faces,  zone id: 2634
+              4 polygonal wall faces,  zone id: 23
+              6 polygonal wall faces,  zone id: 2633
+              6 polygonal wall faces,  zone id: 22
+              6 polygonal wall faces,  zone id: 2632
+              6 polygonal wall faces,  zone id: 21
+              6 polygonal wall faces,  zone id: 2631
+              6 polygonal wall faces,  zone id: 20
+              6 polygonal wall faces,  zone id: 2630
+              6 polygonal wall faces,  zone id: 19
+              4 polygonal wall faces,  zone id: 2629
+              4 polygonal wall faces,  zone id: 18
+              4 polygonal wall faces,  zone id: 2628
+              4 polygonal wall faces,  zone id: 17
+              4 polygonal wall faces,  zone id: 2627
+              4 polygonal wall faces,  zone id: 14
+              6 polygonal wall faces,  zone id: 2626
+              6 polygonal wall faces,  zone id: 13
+              6 polygonal wall faces,  zone id: 2625
+              6 polygonal wall faces,  zone id: 10
+              4 polygonal wall faces,  zone id: 2624
+              4 polygonal wall faces,  zone id: 9
+              6 polygonal wall faces,  zone id: 2623
+              6 polygonal wall faces,  zone id: 8
+             69 polygonal wall faces,  zone id: 2622
+             69 polygonal wall faces,  zone id: 7
+             10 polygonal wall faces,  zone id: 2621
+             10 polygonal wall faces,  zone id: 6
+            708 polygonal wall faces,  zone id: 2620
+            708 polygonal wall faces,  zone id: 5
+             10 polygonal wall faces,  zone id: 2619
+             10 polygonal wall faces,  zone id: 4
+            691 polygonal wall faces,  zone id: 2618
+            691 polygonal wall faces,  zone id: 3
+              3 polygonal wall faces,  zone id: 2617
+              3 polygonal wall faces,  zone id: 2
+             87 polygonal velocity-inlet faces,  zone id: 2616
+             90 polygonal pressure-outlet faces,  zone id: 2615
+              5 polygonal wall faces,  zone id: 16
+              4 polygonal wall faces,  zone id: 15
+           6225 polygonal wall faces,  zone id: 11
+           6225 polygonal wall faces,  zone id: 1
+      712644 nodes,     1 node zone  ...
+Warning: reading 9 partition grid onto 3 compute node machine.
+         Combining every 3 partitions.
+  Done.
+
+
+Building...
+     mesh
+	distributing mesh
+		pairs...,
+		parts...,
+		faces...,
+		nodes...,
+		shadow nodes...,
+		cells...,
+        bandwidth reduction using Reverse Cuthill-McKee: 46120/3186 = 14.4758
+  Reading boundary layer flags ...
+  Done.
+
+     materials,
+     interface,
+     domains,
+	mixture
+     zones,
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_29-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_43-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_44-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_30-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_31-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_32-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_33-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_34-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_35-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_45-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_46-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_47-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_48-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_49-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_50-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_51-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_36-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_37-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_38-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_39-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_28-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_27-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_26-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_25-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_24-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_23-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_22-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_21-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_20-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_19-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_18-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_17-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_16-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_15-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_14-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_13-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_12-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_11-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_10-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_9-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_8-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_7-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_6-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_5-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_4-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_3-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_52-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_40-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_41-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_42-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_2-shadow
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_1-shadow
+	interior--bounding-box-2-boss-extrude1
+	interior--ct_nose_cone-none
+	bounding-box-2-boss-extrude1:1
+	ct_nose_cone-none-ct_nose_cone-none:2:2685
+	ct_nose_cone-none-ct_nose_cone-none:2:2684
+	ct_nose_cone-none-ct_nose_cone-none:2:2683
+	ct_nose_cone-none-ct_nose_cone-none:2:2682
+	ct_nose_cone-none-ct_nose_cone-none:2:2681
+	ct_nose_cone-none-ct_nose_cone-none:2:2680
+	ct_nose_cone-none-ct_nose_cone-none:2:2679
+	ct_nose_cone-none-ct_nose_cone-none:2:2678
+	ct_nose_cone-none-ct_nose_cone-none:2:2677
+	ct_nose_cone-none-ct_nose_cone-none:1:2676
+	ct_nose_cone-none-ct_nose_cone-none:1:2675
+	ct_nose_cone-none-ct_nose_cone-none:1:2674
+	ct_nose_cone-none-ct_nose_cone-none:1:2673
+	ct_nose_cone-none-ct_nose_cone-none:1:2672
+	ct_nose_cone-none-ct_nose_cone-none:1:2671
+	ct_nose_cone-none-ct_nose_cone-none:1:2670
+	ct_nose_cone-none-ct_nose_cone-none:1:2669
+	ct_nose_cone-none-ct_nose_cone-none:1:2668
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_29
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_43
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_44
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_30
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_31
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_32
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_33
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_34
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_35
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_45
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_46
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_47
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_48
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_49
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_50
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_51
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_36
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_37
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_38
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_39
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_28
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_27
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_26
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_25
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_24
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_23
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_22
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_21
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_20
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_19
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_18
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_17
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_16
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_15
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_14
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_13
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_12
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_11
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_10
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_9
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_8
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_7
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_6
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_5
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_4
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_3
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_52
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_40
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_41
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_42
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_2
+	bounding-box-2-boss-extrude1:1:2616
+	ct_nose_cone-none-ct_nose_cone-none:2
+	ct_nose_cone-none-ct_nose_cone-none:1
+	bounding-box-2-boss-extrude1-ct_nose_cone-none_1
+	bounding-box-2-boss-extrude1:1:2615
+	bounding-box-2-boss-extrude1
+	ct_nose_cone-none
+     parallel,
+Done.
+
+The use of Warped-Face Gradient Correction is recommended for 
+this polyhedral mesh. This option can be enabled in the 
+Solution Methods task page or through the text command 
+"/solve/set/warped-face-gradient-correction/enable yes yes ".
+
+> (cx-gui-do cx-activate-item "Information*OK")
+(cx-gui-do cx-activate-item "Key Behavioral Changes*PanelButtons*PushButton1(OK)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame6(Results)*Table1*Table3(Plots)*PushButton3(Residuals)")
+(cx-gui-do cx-activate-item "Residual Monitors*PanelButtons*PushButton4(Plot)")
+
+Error: gui-monitor-residuals:  Uninitialized flow field.
+Error Object: #f
+(cx-gui-do cx-activate-item "Error*OK")
+(cx-gui-do cx-activate-item "Residual Monitors*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "MenuBar*ReadSubMenu*Data...")
+(cx-gui-do cx-set-file-dialog-entries "Select File" '( "Simplified Rocket 100m-s Run 1.dat.h5") "CFF Data Files (*.dat.h5 )")
+
+Reading from jason-hp-envy:"C:/Users/Jason/Box/CMRC Personal/Fluent/Drag 2026 USLI/Compute Working Dir/Full Retract/Simplified Rocket 100m-s Run 1.dat.h5" in NODE0 mode ...
+
+
+  Reading results.
+Parallel variables...
+Done.
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame6(Results)*Table1*PushButton1(Reports)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame6(Results)*Table1*PushButton1(Reports)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame6(Results)*Table1*Table3(Plots)*PushButton3(Residuals)")
+(cx-gui-do cx-activate-item "Residual Monitors*PanelButtons*PushButton4(Plot)")
+(cx-gui-do cx-activate-item "Residual Monitors*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame6(Results)*Table1*Table3(Plots)*PushButton3(Residuals)")
+(cx-gui-do cx-activate-item "Residual Monitors*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*PushButton2(Definitions)")
+(cx-gui-do cx-activate-item "MenuBar*PopupMenuMonitorDefinitions*Edit...")
+(cx-gui-do cx-set-list-selections "Report Definitions*Table1*List1(Report Definitions)" '( 1))
+(cx-gui-do cx-activate-item "Report Definitions*Table1*List1(Report Definitions)")
+(cx-gui-do cx-activate-item "Report Definitions*PanelButtons*PushButton1(Close)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*Table4*PushButton2(Plot)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 1))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 0 1))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 0))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-activate-item "Report Plot Definitions*PanelButtons*PushButton1(Close)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*PushButton2(Definitions)")
+(cx-gui-do cx-activate-item "MenuBar*PopupMenuMonitorDefinitions*Edit...")
+(cx-gui-do cx-activate-item "Report Definitions*Table1*ButtonBox3*PushButton2(Edit)")
+(cx-gui-do cx-activate-item "Drag Report Definition*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-set-list-selections "Report Definitions*Table1*List1(Report Definitions)" '( 0 1))
+(cx-gui-do cx-activate-item "Report Definitions*Table1*List1(Report Definitions)")
+(cx-gui-do cx-set-list-selections "Report Definitions*Table1*List1(Report Definitions)" '( 0))
+(cx-gui-do cx-activate-item "Report Definitions*Table1*List1(Report Definitions)")
+(cx-gui-do cx-activate-item "Report Definitions*Table1*ButtonBox3*PushButton2(Edit)")
+(cx-gui-do cx-activate-item "Drag Report Definition*PanelButtons*PushButton6(Compute)")
+
+                              Cd                    
+-------------------------------- -------------------
+                    report-def-0         -0.51551956
+(cx-gui-do cx-set-toggle-button2 "Drag Report Definition*Table1*Table1*CheckButton6(Create Output Parameter)" #t)
+(cx-gui-do cx-activate-item "Drag Report Definition*Table1*Table1*CheckButton6(Create Output Parameter)")
+(cx-gui-do cx-activate-item "Drag Report Definition*PanelButtons*PushButton6(Compute)")
+
+                              Cd                    
+-------------------------------- -------------------
+                    report-def-0         -0.51551956
+(cx-gui-do cx-activate-item "Drag Report Definition*PanelButtons*PushButton1(OK)")
+(cx-gui-do cx-activate-item "Report Definitions*PanelButtons*PushButton1(Close)")
+(cx-gui-do cx-activate-item "MenuBar*ReadSubMenu*Data...")
+(cx-gui-do cx-set-file-dialog-entries "Select File" '( "C:/Users/Jason/Box/CMRC Personal/Fluent/Drag 2026 USLI/Compute Working Dir/Full Extend/Simplified Rocket 100m-s Run 1.dat.h5") "CFF Data Files (*.dat.h5 )")
+
+Reading from jason-hp-envy:"C:/Users/Jason/Box/CMRC Personal/Fluent/Drag 2026 USLI/Compute Working Dir/Full Extend/Simplified Rocket 100m-s Run 1.dat.h5" in NODE0 mode ...
+
+
+  Reading results.
+Parallel variables...
+Done.
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*PushButton2(Definitions)")
+(cx-gui-do cx-activate-item "MenuBar*PopupMenuMonitorDefinitions*Edit...")
+(cx-gui-do cx-activate-item "Report Definitions*Table1*ButtonBox3*PushButton4(Compute)")
+
+        report-def-0
+ -------------------
+                              Cd                    
+-------------------------------- -------------------
+                    report-def-0         -0.87824771
+(cx-gui-do cx-activate-item "Report Definitions*PanelButtons*PushButton1(Close)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*PushButton1(Residuals)")
+(cx-gui-do cx-activate-item "Residual Monitors*PanelButtons*PushButton4(Plot)")
+(cx-gui-do cx-activate-item "Residual Monitors*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*PushButton2(Definitions)")
+(cx-gui-do cx-activate-item "MenuBar*ExportSubMenu*Solution Data...")
+(cx-gui-do cx-activate-item "Export*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*Table4*PushButton2(Plot)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 0 1))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 1))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '())
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 0))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-activate-item "Report Plot Definitions*PanelButtons*PushButton1(Close)")
+(cx-gui-do cx-activate-item "MenuBar*FileMenu*Save Picture...")
+(cx-gui-do cx-activate-item "Save Picture*PanelButtons*PushButton4(Preview)")
+(cx-gui-do cx-activate-item "Preview*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Save Picture*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Ribbon*Frame1*Frame5(Solution)*Table1*Table3(Reports)*Table4*PushButton2(Plot)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 0 1))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 0))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '())
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-set-list-selections "Report Plot Definitions*Table1*List1(Report Plots)" '( 0))
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*List1(Report Plots)")
+(cx-gui-do cx-activate-item "Report Plot Definitions*Table1*ButtonBox3*PushButton2(Edit)")
+(cx-gui-do cx-activate-item "Edit Report Plot*PanelButtons*PushButton6(Plot)")
+(cx-gui-do cx-activate-item "Edit Report Plot*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Report Plot Definitions*PanelButtons*PushButton1(Close)")
+(cx-gui-do cx-activate-item "MenuBar*FileMenu*Save Picture...")
+(cx-gui-do cx-activate-item "Save Picture*PanelButtons*PushButton4(Preview)")
+(cx-gui-do cx-activate-item "Preview*PanelButtons*PushButton2(Cancel)")
+(cx-gui-do cx-activate-item "Save Picture*PanelButtons*PushButton2(Cancel)")
+/exit y
+Auto-Transcript Stop Time:  13:15:21, 03 Mar 2026 Eastern Standard Time 
+Total Transcript Time: 11 Minute 44 Second.

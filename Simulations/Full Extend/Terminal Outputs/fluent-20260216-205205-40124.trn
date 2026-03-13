@@ -1,0 +1,76 @@
+Auto-Transcript Start Time:  20:52:05, 16 Feb 2026 Eastern Standard Time 
+Current Directory: "C:\Users\Jason\Box\CMRC Personal\Fluent\Drag 2026 USLI\Compute Working Dir\Full Extend"
+
+              Welcome to ANSYS Fluent 2025 R2.04
+
+              Copyright 1987-2025 ANSYS, Inc. All Rights Reserved.
+              Unauthorized use, distribution or duplication is prohibited.
+              This product is subject to U.S. laws governing export and re-export.
+              For full Legal Notice, see documentation.
+
+Build Time: Oct  7 2025 15:34:38 EDT  Build Id: 10205  
+ 
+Connected License Server List:	<Shared_Web_License_Server>
+
+     --------------------------------------------------------------
+     This is a student version of ANSYS FLUENT. Usage of this product
+     license is limited to the terms and conditions specified in your ANSYS
+     license form, additional terms section.
+     --------------------------------------------------------------
+Host spawning Node 0 on machine "jasons-desktop" (win64).
+
+----------------------------------------------------------------------------------------
+ID    Hostname        Core  O.S.         PID    Vendor                                 
+----------------------------------------------------------------------------------------
+n8    jasons-desktop  9/20  Windows-x64  21792  12th Gen Intel(R) Core(TM) i7-12700    
+n7    jasons-desktop  8/20  Windows-x64  62612  12th Gen Intel(R) Core(TM) i7-12700    
+n6    jasons-desktop  7/20  Windows-x64  82788  12th Gen Intel(R) Core(TM) i7-12700    
+n5    jasons-desktop  6/20  Windows-x64  50244  12th Gen Intel(R) Core(TM) i7-12700    
+n4    jasons-desktop  5/20  Windows-x64  8768   12th Gen Intel(R) Core(TM) i7-12700    
+n3    jasons-desktop  4/20  Windows-x64  49412  12th Gen Intel(R) Core(TM) i7-12700    
+n2    jasons-desktop  3/20  Windows-x64  30988  12th Gen Intel(R) Core(TM) i7-12700    
+n1    jasons-desktop  2/20  Windows-x64  77296  12th Gen Intel(R) Core(TM) i7-12700    
+n0*   jasons-desktop  1/20  Windows-x64  82088  12th Gen Intel(R) Core(TM) i7-12700    
+host  jasons-desktop        Windows-x64  18592  12th Gen Intel(R) Core(TM) i7-12700    
+
+MPI Option Selected: intel
+Selected system interconnect: default
+----------------------------------------------------------------------------------------
+
+Cleanup script file is C:\\Users\\Jason\\Box\\CMRC Personal\\Fluent\\Drag 2026 USLI\\Compute Working Dir\\Full Extend\\cleanup-fluent-jasons-desktop-18592.bat
+
+Graphics driver currently in use: dx11
+
+(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 0)
+Reading "C:/Users/Jason/Box/CMRC Personal/Fluent/Drag 2026 USLI/Compute Working Dir/Full Extend/Simplified Rocket 100m-s Run 1.cas.h5" ...
+
+
+3D mesh
+nodes: 712644
+edges: 0
+faces: 927030 
+cells: 157223 
+reading 1 node zones
+reading 0 edge zones
+reading 129 face zones
+reading 2 cell zones
+reading boundary layer flags...
+generating pointers...done.
+extracting boundary entities...
+ 60589 boundary nodes.
+ 33666 boundary faces.
+ 127 boundary face zones.
+done.
+generating cells...done.
+
+created node-2928 to hold 549823 interior nodes of bounding-box-2-boss-extrude1.
+rezoned 0 interior faces and 549823 interior nodes.
+
+Warning: Curvature data for any of the zones will not be scaled. 
+Mesh is now scaled back from meters.
+analyzing boundary connectivity...done.
+
+Meshing> (cx-gui-do cx-activate-item "Key Behavioral Changes*PanelButtons*PushButton1(OK)")
+/exit y
+Auto-Transcript Stop Time:  20:52:32, 16 Feb 2026 Eastern Standard Time 
+Total Transcript Time: 0 Minute 26 Second.

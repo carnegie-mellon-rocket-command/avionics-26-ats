@@ -1,0 +1,310 @@
+{
+    "workflow": {
+        "version": "25.2",
+        "ROOT": {
+            "TaskObject:TaskObject1": {
+                "Arguments": {
+                    "FileName": "C:\/Users\/Jason\/Box\/CMRC Personal\/Fluent\/Drag 2026 USLI\/Simplified CAD\/Simplified Rocket.STEP",
+                    "LengthUnit": "mm",
+                    "NumParts": "2"
+                },
+                "CommandName": "ImportGeometry",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Simple",
+                "_name_": "Import Geometry"
+            },
+            "TaskObject:TaskObject2": {
+                "Arguments": "",
+                "CommandName": "AddLocalSizingWTM",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Compound",
+                "_name_": "Add Local Sizing"
+            },
+            "TaskObject:TaskObject3": {
+                "Arguments": {
+                    "CFDSurfaceMeshControls": {
+                        "CurvatureNormalAngle": "18",
+                        "DrawSizeControl": "true",
+                        "ScopeProximityTo": "faces-and-edges"
+                    },
+                    "ExecuteShareTopology": "Yes",
+                    "OriginalZones": [
+                        "ct_nose_cone-none",
+                        "bounding-box-2-boss-extrude1"
+                    ],
+                    "SeparationAngle": "90",
+                    "SeparationRequired": "Yes",
+                    "SurfaceMeshPreferences": {
+                        "ShowSurfaceMeshPreferences": "false"
+                    }
+                },
+                "CheckPoint": "default-on",
+                "CommandName": "GenerateTheSurfaceMeshWTM",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Simple",
+                "Warnings": "__________None",
+                "_name_": "Generate the Surface Mesh"
+            },
+            "TaskObject:TaskObject4": {
+                "Arguments": {
+                    "CappingRequired": "No",
+                    "InvokeShareTopology": "Yes",
+                    "Multizone": "No",
+                    "NonConformal": "No",
+                    "SMImprovePreferences": {
+                        "AdvancedImprove": "no",
+                        "AllowDefeaturing": "no",
+                        "SIQualityCollapseLimit": "0.84999999999999998",
+                        "SIQualityIterations": "5",
+                        "SIQualityMaxAngle": "160",
+                        "SIRemoveStep": "no",
+                        "SIStepQualityLimit": "0",
+                        "SIStepWidth": "0",
+                        "ShowSMImprovePreferences": "false"
+                    },
+                    "SetupType": "The geometry consists of both fluid and solid regions and\/or voids",
+                    "WallToInternal": "No"
+                },
+                "CheckPoint": "default-off",
+                "CommandName": "GeometrySetup",
+                "InactiveTaskList": [
+                    "TaskObject6"
+                ],
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskList": [
+                    "TaskObject5",
+                    "TaskObject7",
+                    "TaskObject8"
+                ],
+                "TaskType": "Conditional",
+                "_name_": "Describe Geometry"
+            },
+            "TaskObject:TaskObject5": {
+                "Arguments": {
+                    "InterfaceSelect": "Automatic"
+                },
+                "CheckPoint": "default-on",
+                "CommandName": "ShareTopology",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Simple",
+                "_name_": "Apply Share Topology"
+            },
+            "TaskObject:TaskObject6": {
+                "CommandName": "Capping",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Compound",
+                "_name_": "Enclose Fluid Regions (Capping)"
+            },
+            "TaskObject:TaskObject7": {
+                "Arguments": {
+                    "BoundaryZoneList": [
+                        "bounding-box-2-boss-extrude1:1:2616",
+                        "bounding-box-2-boss-extrude1:1:2615"
+                    ],
+                    "BoundaryZoneTypeList": [
+                        "velocity-inlet",
+                        "mass-flow-outlet"
+                    ],
+                    "OldBoundaryZoneList": [
+                        "bounding-box-2-boss-extrude1:1:2616",
+                        "bounding-box-2-boss-extrude1:1:2615"
+                    ],
+                    "OldBoundaryZoneTypeList": [
+                        "wall",
+                        "wall"
+                    ],
+                    "SelectionType": "zone",
+                    "ZoneLocation": [
+                        "2",
+                        "-320.02789",
+                        "-322.2881",
+                        "1341.7101",
+                        "322.51277",
+                        "318.56079",
+                        "1341.7101",
+                        "bounding-box-2-boss-extrude1:1:2616",
+                        "-319.96963",
+                        "-322.04429",
+                        "-4658.29",
+                        "323.14011",
+                        "318.34066",
+                        "-4658.29",
+                        "bounding-box-2-boss-extrude1:1:2615"
+                    ]
+                },
+                "CommandName": "UpdateBoundaries",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Simple",
+                "_name_": "Update Boundaries"
+            },
+            "TaskObject:TaskObject8": {
+                "CheckPoint": "default-on",
+                "CommandName": "CreateRegions",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Simple",
+                "_name_": "Create Regions"
+            },
+            "TaskObject:TaskObject9": {
+                "CommandName": "UpdateRegions",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Simple",
+                "_name_": "Update Regions"
+            },
+            "TaskObject:TaskObject10": {
+                "Arguments": "",
+                "CommandName": "AddBoundaryLayers",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskList": [
+                    "TaskObject12"
+                ],
+                "TaskType": "Compound",
+                "_name_": "Add Boundary Layers"
+            },
+            "TaskObject:TaskObject11": {
+                "Arguments": {
+                    "ShowSolidFluidMeshed": "true",
+                    "VolumeFill": "polyhedra",
+                    "VolumeFillControls": {
+                        "MaxSize": "148.85113077673478"
+                    }
+                },
+                "CheckPoint": "default-on",
+                "CommandName": "GenerateTheVolumeMeshWTM",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Simple",
+                "Warnings": "__________None",
+                "_name_": "Generate the Volume Mesh"
+            },
+            "TaskObject:TaskObject12": {
+                "Arguments": {
+                    "BLControlName": "smooth-transition_1",
+                    "BLRegionList": [
+                        "bounding-box-2-boss-extrude1"
+                    ],
+                    "BLZoneList": [
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2667",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2666",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2665",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2664",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2663",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2662",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2661",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2660",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2659",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2658",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2657",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2656",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2655",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2654",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2653",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2652",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2651",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2650",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2649",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2648",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2647",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2646",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2645",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2644",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2643",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2642",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2641",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2640",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2639",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2638",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2637",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2636",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2635",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2634",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2633",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2632",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2631",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2630",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2629",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2628",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2627",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2626",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2625",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2624",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2623",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2622",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2621",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2620",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2619",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2618",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none:2617",
+                        "bounding-box-2-boss-extrude1-ct_nose_cone-none",
+                        "bounding-box-2-boss-extrude1:1"
+                    ],
+                    "CompleteRegionScope": [
+                        "bounding-box-2-boss-extrude1"
+                    ],
+                    "LocalPrismPreferences": {
+                        "Continuous": "Continuous"
+                    }
+                },
+                "CommandName": "AddBoundaryLayers",
+                "ObjectPath": "",
+                "State": "Out-of-date",
+                "TaskType": "Compound Child",
+                "_name_": "smooth-transition_1"
+            },
+            "Workflow": {
+                "CurrentTask": "TaskObject11",
+                "TaskList": [
+                    "TaskObject1",
+                    "TaskObject2",
+                    "TaskObject3",
+                    "TaskObject4",
+                    "TaskObject9",
+                    "TaskObject10",
+                    "TaskObject11"
+                ],
+                "WorkflowType": "Watertight Geometry"
+            }
+        }
+    },
+    "meshing": {
+        "version": "25.2",
+        "ROOT": {
+            "GlobalSettings": {
+                "AreaUnit": "mm^2",
+                "EnableCleanCAD": "true",
+                "EnableComplexMeshing": "false",
+                "InitialVersion": "25.2",
+                "LengthUnit": "mm",
+                "NormalMode": "false",
+                "VolumeUnit": "mm^3"
+            },
+            "Graphics": {
+                "Bounds": {
+                    "BoundX": "false",
+                    "BoundY": "false",
+                    "BoundZ": "false",
+                    "DeltaValue": "0",
+                    "Selection": ""
+                }
+            }
+        }
+    },
+    "PartManagement": {
+        "version": "25.2",
+        "ROOT": {
+            "Node:Node1": {
+                "Name": "Meshing Model",
+                "_name_": "Meshing Model"
+            }
+        }
+    }
+}
