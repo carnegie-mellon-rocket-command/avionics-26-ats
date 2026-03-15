@@ -18,7 +18,7 @@ Made by the 2026 Avionics team :D (adapting on code from the 2025 Avionics team)
 // ***************** META *****************
 // ⚠⚠⚠ VERY IMPORTANT ⚠⚠⚠
 // true sets subscale altitude target, false sets fullscale altitude target
-#define SUBSCALE false
+#define SUBSCALE true
 
 // ⚠⚠⚠ IMPORTANT ⚠⚠⚠
 // true will NOT actually gather data, only simulate it for testing purposes
@@ -51,14 +51,13 @@ using namespace BLA;
 
 // ***************** CONSTANTS *****************
 #define ROCKET_DRAG_COEFFICIENT 0.46f              // Average value from OpenRocket
-#define ROCKET_CROSS_SECTIONAL_AREA 0.54541539124f  // The surface area (ft^2) of the rocket facing upwards
+#define ROCKET_CROSS_SECTIONAL_AREA 0.19625f  // The surface area (ft^2) of the rocket facing upwards
 #if SUBSCALE
 #define ROCKET_MASS 11.28125f  // lbs in dry mass (with engine housing but NOT propellant, assuming no ballast)
 #else
 #define ROCKET_MASS 33.4375f  // lbs in dry mass (with engine housing but NOT propellant, assuming no ballast)
 #endif
-// #define ROCKET_MASS 19.5625f // lbs in dry mass (with engine housing but NOT propellant)
-#define MAX_FLAP_SURFACE_AREA 0.0365972954f
+#define MAX_FLAP_SURFACE_AREA 0.03463805f //ft^2
 #define ATS_MAX_SURFACE_AREA MAX_FLAP_SURFACE_AREA + ROCKET_CROSS_SECTIONAL_AREA  // The maximum surface area (ft^2) of the rocket with flaps extended, including rocket's area
 
 // Kalman filter parameters
@@ -73,8 +72,8 @@ using namespace BLA;
 #define m_a 0.8
 //Engine/Flight Constants (in ms) - take from simulation rocketpy or openrocket
 #define DEF_motor_burnout_time_min 3000  //prevent ats turn on until time is reached -
-#define DEF_motor_burnout_time_max 3500  //turn on ats when motor burnout is detected or cutoff_time is reached -
-#define DEF_cutoff_apogee_time 18000     //turn off ats when apogee is detected or cutoff_time is reached -
+#define DEF_motor_burnout_time_max 1600  //turn on ats when motor burnout is detected or cutoff_time is reached -
+#define DEF_cutoff_apogee_time 16400     //turn off ats when apogee is detected or cutoff_time is reached -
 #define DEF_cutoff_landing_time 300000   //mark as landed when detected or cutoff_time is reached
 // ***************** GLOBALS *****************
 #define SKIP_ATS false  // Whether the rocket is NOT running ATS, so don't try to mount servos, etc.
@@ -95,7 +94,7 @@ const float ALT_TARGET = 3750.0f;  // ft
 #else
 const float ALT_TARGET = 5250.0f;  // ft above launch pad
 #endif
-const float ACCEL_THRESHOLD = GRAVITY;  // Acceleration threshold for launch detection (ft/s^2)
+const float ACCEL_THRESHOLD = 2*GRAVITY;  // Acceleration threshold for launch detection (ft/s^2)
 const float VELOCITY_THRESHOLD = 0.1f;  // Velocity threshold for landing detection (ft/s)
 
 // ***************** PIN DEFINITIONS *****************
@@ -446,6 +445,7 @@ bool setupLSM6DSOX() {
 // ***************** DATA COLLECTION/LOGGING METHODS *****************
 /** @brief Refresh sensors and update globals with latest measurements
   * Output string can be viewed when DEBUG is true
+  
   * @returns a CSV string with format:
   * - time, pressure (hPa), altitude_raw (m), acceleration_raw_x (m/s^2), 
   * - acceleration_raw_y, acceleration_raw_z, gyro_x (radians/s), gyro_y, gyro_z, 
