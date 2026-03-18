@@ -1,6 +1,7 @@
 /*
-Carnegie Schmellon Rocketry Club: Precision INstrumented Experimental Aerial Propulsion Payload 
-                                  for Low-altitude Exploration ("PINEAPPLE") data logger            
+Carnegie Schmellon Rocketry Club: Crewed Astrolab for Nutritional and Terrestrial Analytics in 
+                                  Landing Operations for Unveiling Planetary Exploration 
+                                  ("CANTALOUPE") data logger            
 
 Made by the 2026 Avionics team :D (adapting on code from the 2025 Avionics team)
 */
@@ -164,7 +165,7 @@ void setup() {
     }
 
     // Determine File to write to
-    DetermineWriteFile();
+    determineWriteFile();
 
     // Initialize sensors
     if (!setupSensors()) {
@@ -350,7 +351,7 @@ void writeData(String text) {
 }
 
 /** @brief Determines the file to write to when the ATS is started. */
-void DetermineWriteFile(){
+void determineWriteFile(){
     #ifdef DEBUG_C
         Serial.println("Verifing files");
     #endif
@@ -526,11 +527,12 @@ bool detectLanding() {
 
     if ((abs(gAccelFiltered)-32) < 2 && abs(gVelocityFiltered)< 2){
         landed_cd -= (int)(millis() - last_check);
-    }else if (landed_cd > 0){
+    }
+    else if (landed_cd > 0){
         landed_cd = 5000;
     }
 
-    if(landed_cd <= 0){
+    if (landed_cd <= 0){
         return true;
     }
     return false;
@@ -662,14 +664,17 @@ void adjustATS() {
     // ATS window
     if (millis() - gLaunchTime > 4500) {
         if (millis() - gLaunchTime < 6000) {
-          // Adjust ATS based on position
-          setATSPosition(ATS_IN);
-          delay(500);
-          setATSPosition(ATS_OUT);  // Initial position
-          delay(500);
-          setATSPosition(ATS_IN);  // Reset position
-          delay(500);
-          Serial.println("Cycling ATS position");
+            // Adjust ATS based on position
+            if (millis() - gLaunchTime > 5500){
+                setATSPosition(ATS_IN);  // Reset position
+            }
+            else if (millis() - gLaunchTime > 5000){
+                setATSPosition(ATS_OUT); // Initial position
+            }
+            else{
+                setATSPosition(ATS_IN);
+            }
+            Serial.println("Cycling ATS position");
         } else {
         // Adjust ATS based on position
           setATSPosition(gATSPosition);
