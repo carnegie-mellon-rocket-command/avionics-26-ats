@@ -127,6 +127,7 @@ String gBuffer;                                                              // 
 const int buffer_size = 50;                                                  // Number of measurements to take before writing to SD card
 unsigned long gStartTime, gCurrTime, gTimer, gTimeDelta, gPrevLoopTime = 0;  // Keeps track of time to make sure we are taking measurements at a consistent rate
 float gAltFiltered, gVelocityFiltered, gAccelFiltered, gPredictedAltitude;   // Filtered measurements shall be kept as global variables; raw data will be kept local to save memory
+float apogee = 0;
 
 // Internal stuff for the Kalman Filter
 float altitude_filtered_previous, acceleration_filtered_previous = 0.0f;
@@ -145,9 +146,11 @@ KALMAN<NumStates, NumObservations> KalmanFilter;  // Kalman filter
 BLA::Matrix<NumStates> measurement_state;
 
 
+
 // ***************** ENTRY POINT TO THE PROGRAM *****************
 /** @brief Initializes all devices, test devices and ATS */
 void setup() {
+  atsOnSound();
   LEDSetup();
 
   // Setup serial terminal
@@ -184,7 +187,6 @@ void setup() {
 
   // Show ATS is on: speaker and cycle ATS
   pinMode(PIEZO, OUTPUT);
-  atsOnSound();
   testATS();
 
   // Initalize time evolution matrix
@@ -209,6 +211,7 @@ void setup() {
   LEDSuccess();
   gStartTime = millis();
   gLaunchTime = gStartTime;
+  atsReadySound();
 }
 
 // Repeats indefinitely after setup() is finished
@@ -264,9 +267,9 @@ void loop() {
     // End the program
     detachATS();
     if (DEBUG) { Serial.println("Rocket has landed, ending program"); }
-    while (true)
-      ;
-  }
+    while (true){
+      atsAltitudeChecking(apogee);
+    }
 }
 
 
@@ -468,6 +471,8 @@ String getMeasurements() {
 
   // Pass raw data to be filtered
   filterData(readAltimeter(), readIMU() - GRAVITY);
+
+  apogee = max(apogee, gAltFiltered);
 
   // Print measurements
   String movementData = String(m_bmp.pressure / 100.0) + ", " + String(m_bmp.readAltitude(SEA_LEVEL_PRESSURE_HPA)) + ", " + String(accel.acceleration.x * METERS_TO_FEET) + ", " + String(accel.acceleration.y * METERS_TO_FEET) + ", " + String(accel.acceleration.z * METERS_TO_FEET) + ", " + String(gyro.gyro.x) + ", " + String(gyro.gyro.y) + ", " + String(gyro.gyro.z) + ", " + String(gAltFiltered) + ", " + String(gVelocityFiltered) + ", " + String(gAccelFiltered);
@@ -695,6 +700,7 @@ void LEDError() {
     delay(1000);
     digitalWrite(LED_PIN, LOW);
     delay(1000);
+    atsSystemFailed();
   }
 }
 
