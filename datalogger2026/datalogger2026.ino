@@ -1,6 +1,5 @@
 /*
-Carnegie Schmellon Rocketry Club: Precision INstrumented Experimental Aerial Propulsion Payload 
-                                  for Low-altitude Exploration ("PINEAPPLE") data logger            
+Carnegie Mellon Rocket Command: ATS data logger and airbrake control       
 
 Made by the 2026 Avionics team :D (adapting on code from the 2025 Avionics team)
 */
@@ -14,17 +13,20 @@ Made by the 2026 Avionics team :D (adapting on code from the 2025 Avionics team)
 #include <BasicLinearAlgebra.h>  // version 3.7
 #include <Kalman.h>
 #include <cassert>
+#include <Arduino.h>
 
 // ***************** META *****************
 // ⚠⚠⚠ VERY IMPORTANT ⚠⚠⚠
 // true sets subscale altitude target, false sets fullscale altitude target
-#define SUBSCALE true
+#define SUBSCALE false
 
 // ⚠⚠⚠ IMPORTANT ⚠⚠⚠
 // true will NOT actually gather data, only simulate it for testing purposes
 // false will gather data, FOR LAUNCH
 #define SIMULATE false
 
+// For speaker
+#define PIEZO 23
 // Simulation mode libraries
 #if SIMULATE
 #include <Dictionary.h>
@@ -44,20 +46,20 @@ Dictionary* m_simSensorValues = new Dictionary();
 using namespace BLA;
 
 // ***************** UNITS (in IPS) *****************
-#define SEA_LEVEL_PRESSURE_HPA 1017.6f
+#define SEA_LEVEL_PRESSURE_HPA 1033.9f // need to change before flight (convert inhg to hpa)
 #define METERS_TO_FEET 3.28084f
 #define ATMOSPHERE_FLUID_DENSITY 0.076474f  // lbs/ft^3
 #define GRAVITY 32.174f                     // ft/s^2
 
 // ***************** CONSTANTS *****************
 #define ROCKET_DRAG_COEFFICIENT 0.46f              // Average value from OpenRocket
-#define ROCKET_CROSS_SECTIONAL_AREA 0.19625f  // The surface area (ft^2) of the rocket facing upwards
+#define ROCKET_CROSS_SECTIONAL_AREA  0.13635384781f  // The surface area (ft^2) of the rocket facing upwards
 #if SUBSCALE
 #define ROCKET_MASS 11.28125f  // lbs in dry mass (with engine housing but NOT propellant, assuming no ballast)
 #else
 #define ROCKET_MASS 33.4375f  // lbs in dry mass (with engine housing but NOT propellant, assuming no ballast)
 #endif
-#define MAX_FLAP_SURFACE_AREA 0.03463805f //ft^2
+#define MAX_FLAP_SURFACE_AREA 0.0365972954f //ft^2
 #define ATS_MAX_SURFACE_AREA MAX_FLAP_SURFACE_AREA + ROCKET_CROSS_SECTIONAL_AREA  // The maximum surface area (ft^2) of the rocket with flaps extended, including rocket's area
 
 // Kalman filter parameters
@@ -71,9 +73,8 @@ using namespace BLA;
 #define m_s 0.1
 #define m_a 0.8
 //Engine/Flight Constants (in ms) - take from simulation rocketpy or openrocket
-#define DEF_motor_burnout_time_min 3000  //prevent ats turn on until time is reached -
-#define DEF_motor_burnout_time_max 1600  //turn on ats when motor burnout is detected or cutoff_time is reached -
-#define DEF_cutoff_apogee_time 16400     //turn off ats when apogee is detected or cutoff_time is reached -
+#define DEF_motor_burnout_time_max 3000  //turn on ats when motor burnout is detected or cutoff_time is reached -
+#define DEF_cutoff_apogee_time 19100     //turn off ats when apogee is detected or cutoff_time is reached -
 #define DEF_cutoff_landing_time 300000   //mark as landed when detected or cutoff_time is reached
 // ***************** GLOBALS *****************
 #define SKIP_ATS false  // Whether the rocket is NOT running ATS, so don't try to mount servos, etc.
@@ -153,10 +154,10 @@ void setup() {
   Serial.begin(115200);  //Baud rate (bps)
   Serial.println("Initializing...");
 
-// Initalize Simulator
-#if SIMULATE
-  startSimulation();
-#endif
+  // Initalize Simulator
+  #if SIMULATE
+    startSimulation();
+  #endif
 
   // Initialize SD card
   if (!initializeSDCard()) {
@@ -180,6 +181,10 @@ void setup() {
   }
 
   Serial.println("All sensors working!");
+
+  // Show ATS is on: speaker and cycle ATS
+  pinMode(PIEZO, OUTPUT);
+  atsOnSound();
   testATS();
 
   // Initalize time evolution matrix
@@ -633,7 +638,8 @@ void adjustATS() {
     if (error > 0) {  // Too slow
       adjustment = 0;
     } else {                                        // Too fast
-      adjustment = PIDFactor(abs(error), 0.03, 0);  // Should normalize to 0 to 1
+      adjustment = PIDFactor(abs(error), 0.03, 0);  // Should normalize to 0 to 1, it doesnt
+      adjustment = min(adjustment, 1.0);
     }
 
     gATSPosition = adjustment;
@@ -644,15 +650,21 @@ void adjustATS() {
 
   // ATS window
   if (millis() - gLaunchTime > DEF_motor_burnout_time_max) {
-    if (millis() - gLaunchTime < 6000) {
+    if (millis() - gLaunchTime < 5000) {
       // Adjust ATS based on position
-      setATSPosition(ATS_IN);
-      delay(1000);
-      setATSPosition(ATS_OUT);  // Initial position
-      delay(1000);
-      setATSPosition(ATS_IN);  // Reset position
-      delay(1000);
-      Serial.println("Cycling ATS position");
+        if (millis() - gLaunchTime > 4200){
+            setATSPosition(ATS_IN);  // Reset position
+            gATSPosition = ATS_IN;
+        }
+        else if (millis() - gLaunchTime > 3200){
+            setATSPosition(ATS_OUT); // Initial position
+            gATSPosition = ATS_OUT;
+        }
+        else{
+            setATSPosition(ATS_IN);
+            gATSPosition = ATS_IN;
+        }
+        Serial.println("Cycling ATS position");
     } else {
       // Adjust ATS based on position
       setATSPosition(gATSPosition);
@@ -702,3 +714,151 @@ void LEDLogging() {
 void LEDFlying() {
   digitalWrite(LED_PIN, HIGH);
 }
+
+void atsReadySound() {
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(100);
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+  
+  digitalWrite(PIEZO, HIGH);
+  delay(200);
+  digitalWrite(PIEZO, LOW);
+  delay(100);
+  digitalWrite(PIEZO, HIGH);
+  delay(200);
+  digitalWrite(PIEZO, LOW);
+
+}
+
+void atsOnSound() {
+  digitalWrite(PIEZO, HIGH);
+  delay(200);
+  digitalWrite(PIEZO, LOW);
+  delay(100);
+  digitalWrite(PIEZO, HIGH);
+  delay(200);
+  digitalWrite(PIEZO, LOW);
+
+}
+
+void atsSystemFailed(){
+  digitalWrite(PIEZO, HIGH);
+  delay(500);
+  digitalWrite(PIEZO, LOW);
+  delay(100);
+
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(100);
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+
+  digitalWrite(PIEZO, HIGH);
+  delay(500);
+  digitalWrite(PIEZO, LOW);
+  delay(100);
+
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(100);
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+  digitalWrite(PIEZO, HIGH);
+  delay(100);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+
+}
+
+void atsAltitudeChecking(int offset){
+  int thousands = (offset / 1000) % 10;  // thousands
+  int hundreds = (offset / 100) % 10;   // hundreds
+  int tens = (offset / 10) % 10;    // tens
+  int ones = offset % 10;           // ones
+  //thousands digit
+  if (offset > 999){
+    for (int i=0; i<thousands; ++i) {
+    digitalWrite(PIEZO, HIGH);
+    delay(100);
+    digitalWrite(PIEZO, LOW);
+    delay(100);
+    }
+    delay(2000); 
+    }
+  
+  // hundreds
+  if (offset >99){
+    if (hundreds == 0){
+      hundreds = 10;
+    }
+    for (int i=0; i<hundreds; ++i) {
+    digitalWrite(PIEZO, HIGH);
+    delay(100);
+    digitalWrite(PIEZO, LOW);
+    delay(100);
+    }
+    delay(2000);
+  }
+
+  //tens
+  if (offset > 9){
+    if (tens == 0){
+      tens = 10;
+    }
+    for (int i=0; i<tens; ++i) {
+    digitalWrite(PIEZO, HIGH);
+    delay(100);
+    digitalWrite(PIEZO, LOW);
+    delay(100);
+    }
+    delay(2000);
+  }
+   
+  //ones
+  if (offset >0){
+    if (ones == 0){
+      ones = 10;
+    }
+    for (int i=0; i<ones; ++i) {
+    digitalWrite(PIEZO, HIGH);
+    delay(100);
+    digitalWrite(PIEZO, LOW);
+    delay(100);
+    }
+  }
+  delay(1000);
+
+  // ending triplet
+  digitalWrite(PIEZO, HIGH);
+  delay(50);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+  digitalWrite(PIEZO, HIGH);
+  delay(50);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+  digitalWrite(PIEZO, HIGH);
+  delay(50);
+  digitalWrite(PIEZO, LOW);
+  delay(50);
+}
+
